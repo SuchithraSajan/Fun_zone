@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Prank Questions</title>
     <style>
-        body {
+        #body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
             height: 100vh;
@@ -95,6 +95,8 @@
     </style>
 </head>
 <body>
+    <a href="{% url 'first' %}" >Back to Home</a>
+    <div id="body">
     <h1 id="question"></h1>
     <div id="buttons">
         <button id="yes">Yes</button>
@@ -152,5 +154,6 @@
             }, 2000);
         });
     </script>
+    </div>
 </body>
 </html>

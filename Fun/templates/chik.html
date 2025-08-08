@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catch the Chicken 🐔</title>
 <style>
-    body {
+    #body {
         margin: 0;
         height: 100vh;
         display: flex;
@@ -57,11 +57,12 @@
 </style>
 </head>
 <body>
-
+    <a href="{% url 'first' %}" >Back to Home</a>
+    <div id="body">
 <h1>Catch the Chicken 🐔</h1>
 <div id="score">Score: 0</div>
 <div id="game-area">
-    <img src="{{pic}}chicken.png" 
+    <img src="{{pic}}images/chicken.png" 
          alt="Chicken" id="chicken">
 </div>
 <button onclick="restartGame()">Restart Game</button>
@@ -108,6 +109,6 @@
 
     startGame();
 </script>
-
+</div>
 </body>
 </html>

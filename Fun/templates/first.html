@@ -119,20 +119,17 @@
 <!-- Game Posters -->
 <h2>🎮 Check Out These Games</h2>
 <div class="poster-grid">
-    <a href="truth-or-dare.html" class="poster">
-        <img src="https://via.placeholder.com/300x150?text=Truth+or+Dare" alt="Truth or Dare">
+    <a href="{% url 'tord' %}" class="poster">
+        <img src="{{pic}}images/download.jpg" alt="Truth or Dare">
         <div class="poster-title">Truth or Dare</div>
     </a>
-    <a href="neon-snake.html" class="poster">
-        <img src="https://via.placeholder.com/300x150?text=Neon+Snake" alt="Neon Snake">
+    <a href="{% url 'neon' %}" class="poster">
+        <img src="{{pic}}images/images.jpg" alt="Neon Snake">
         <div class="poster-title">Neon Snake</div>
     </a>
-    <a href="cookies-game.html" class="poster">
-        <img src="{{pic}}images/unnamed.webp" alt="Cookies Game">
-        <div class="poster-title">Cookies Game</div>
-    </a>
-    <a href="chicken-game.html" class="poster">
-        <img src="{{pic}}images/chicken.png" alt="Chicken Game">
+
+    <a href="{% url 'chik' %}" class="poster">
+        <img src="{{pic}}images/capsule_616x353.jpg" alt="Chicken Game">
         <div class="poster-title">Chicken Game</div>
     </a>
 </div>

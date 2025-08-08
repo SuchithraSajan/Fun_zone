@@ -46,3 +46,14 @@ def success_page(request):
 
 def first(request):
     return render(request,'first.html')
+
+def neon(request):
+    return render(request,'neon.html')
+
+def tord(request):
+    return render(request,'tord.html')
+
+def chik(request):
+    return render(request,'chik.html')
+
+

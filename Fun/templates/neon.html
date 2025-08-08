@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Neon Snake Game</title>
     <style>
-        body {
+        #body {
             background: radial-gradient(circle at center, #0f0f0f, #000);
             display: flex;
             flex-direction: column;
@@ -43,6 +43,8 @@
     </style>
 </head>
 <body>
+    <a href="{% url 'first' %}" >Back to Home</a>
+<div id="body">
     <h1>🐍 Neon Snake</h1>
     <div id="score">Score: 0</div>
     <br>
@@ -156,5 +158,6 @@
 
         let game = setInterval(draw, 150);
     </script>
+    </div>
 </body>
 </html>
