@@ -29,7 +29,7 @@ def login_view(request):
         user = authenticate(request, username=name, password=password)
         if user is not None:
             login(request, user)
-            return redirect('success_page')  
+            return redirect('first')  
         else:
             return render(request, 'login.html', {'error': 'Invalid credentials'})
 
@@ -44,4 +44,5 @@ def logout_view(request):
 def success_page(request):
     return render(request, 'success.html')
 
-
+def first(request):
+    return render(request,'first.html')
