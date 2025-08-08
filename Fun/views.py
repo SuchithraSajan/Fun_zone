@@ -57,4 +57,4 @@ def chik(request):
     return render(request,'chik.html')
 
 def tord(request):
-    return render(request,'tord')
+    return render(request,'tord.html')
