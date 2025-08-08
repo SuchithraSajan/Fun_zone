@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Success!</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(270deg, #00c9ff, #92fe9d);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50% }
+      50% { background-position: 100% 50% }
+      100% { background-position: 0% 50% }
+    }
+
+    .success-box {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #fff;
+      animation: pop 1s ease-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    .party-emoji {
+      font-size: 2em;
+      animation: float 2s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body>
+   <audio autoplay>
+    <source src="https://www.soundjay.com/human/sounds/applause-01.mp3" type="audio/mpeg">
+  </audio>
+  <div class="success-box">
+    <div class="party-emoji">🎉🎉🎉</div>
+    <h1>Woohoo! Signed Up!</h1>
+    <p>You're officially awesome 😎</p>
+    <a href="{% url 'login' %}" class="next-btn">Let's Go in ➜</a> 
+    <div class="party-emoji">🎉🎉🎉</div>
+  </div>
+</body>
+</html>

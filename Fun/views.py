@@ -1,23 +1,47 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .forms import SignUpForm
 
 def home(request):
     return render(request, 'home.html')
 
-
 def signup_view(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'success.html')  # You can change this
-    else:
-        form = SignUpForm()
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
 
-    return render(request, 'signup.html', {'form': form})
+        if User.objects.filter(username=name).exists():
+            return render(request, 'signup.html', {'error': 'Username already taken'})
+
+        user = User.objects.create_user(username=name, email=email, password=password)
+        login(request, user)
+        return redirect('success')  # replace 'home' with your homepage url name
+
+    return render(request, 'signup.html')
 
 
-def welcome(request):
-    return render(request,'welcomepage.html')
+def login_view(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        password = request.POST['password']
+        user = authenticate(request, username=name, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('success_page')  # redirect to a success page
+        else:
+            return render(request, 'login.html', {'error': 'Invalid credentials'})
+
+    return render(request, 'login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+def success_page(request):
+    return render(request, 'success.html')
+
+
