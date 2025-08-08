@@ -4,50 +4,69 @@
     <meta charset="UTF-8">
     <title>FunZone - Home</title>
     <style>
+        /* Animated gradient background */
         body {
-            background: linear-gradient(to right, #e1bee7, #ffccbc);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #fce4ec, #f8bbd0, #e1bee7, #d1c4e9);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
 
         .container {
-            padding: 80px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 60px 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            max-width: 600px;
         }
 
         h1 {
             font-size: 3em;
+            color: #6a1b9a;
             margin-bottom: 20px;
-            color: #4a148c;
         }
 
         p {
             font-size: 1.2em;
-            margin-bottom: 40px;
-            color: #444;
+            color: #333;
+            margin-bottom: 30px;
         }
 
         .next-btn {
+            display: inline-block;
             padding: 12px 24px;
             font-size: 16px;
-            background-color: #7b1fa2;
+            background-color: #8e24aa;
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            transition: 0.3s;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
         }
 
         .next-btn:hover {
-            background-color: #4a148c;
+            background-color: #6a1b9a;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to FunZone</h1>
-        <p>Discover your happy place where fun meets creativity.</p>
-        <a href="{% url 'next' %}" class="next-btn">Let's Go ➜</a>
+        <p>Discover your happy place where fun meets creativity!</p>
+        <a href="{% url 'sign' %}" class="next-btn">Let's Go ➜</a>
     </div>
 </body>
 </html>
+
