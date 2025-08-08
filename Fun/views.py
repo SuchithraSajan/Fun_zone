@@ -56,5 +56,5 @@ def prank(request):
 def chik(request):
     return render(request,'chik.html')
 
-def t_or_d(request):
-    return render(request,'t_or_d')
+def tord(request):
+    return render(request,'tord')
