@@ -1,141 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sign Up - FunZone</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background: black;
-      overflow: hidden;
-      font-family: 'Courier New', Courier, monospace;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FunZone - Sign Up</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    .glitch-bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: url('https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif') no-repeat center center;
-      background-size: cover;
-      z-index: -1;
-      opacity: 0.2;
-      filter: contrast(200%) brightness(60%);
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #f8bbd0, #e1bee7, #b39ddb, #ce93d8);
+            background-size: 400% 400%;
+            animation: moveBG 8s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    .signup-box {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 40px;
-      border: 1px solid #ff0000;
-      box-shadow: 0 0 15px #ff0000;
-      color: #fff;
-      text-align: center;
-      border-radius: 10px;
-      max-width: 400px;
-      width: 100%;
-    }
+        @keyframes moveBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
 
-    .signup-box h2 {
-      margin-bottom: 20px;
-      text-shadow: 0 0 5px #ff0000;
-    }
-
-    .signup-box input, .signup-box select {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      background: #111;
-      border: 1px solid #ff0000;
-      color: white;
-    }
-
-    .signup-box button {
-      background: #ff0000;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
-
-    .signup-box button:hover {
-      background: darkred;
-    }
-
-    .small-text {
-      font-size: 12px;
-      color: #aaa;
-      margin-top: 10px;
-    }
-     /* Ghost popup styling */
-        #ghostPopup {
-            display: none;
-            position: fixed;
-            top: 20%;
-            left: 50%;
-            transform: translate(-50%, -20%);
-            background-color: #fff;
-            border: 3px solid #ccc;
-            padding: 30px;
-            border-radius: 15px;
+        .signup-box {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             text-align: center;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-            z-index: 9999;
+            width: 100%;
+            max-width: 400px;
+            animation: popUp 1s ease;
+            margin: 20px;
         }
 
-        #ghostPopup img {
-            width: 100px;
+        @keyframes popUp {
+            0% {transform: scale(0.8); opacity: 0;}
+            100% {transform: scale(1); opacity: 1;}
         }
 
-        #ghostPopup button {
+        h2 {
+            color: #6a1b9a;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #444;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px dashed #8e24aa;
+            border-radius: 12px;
+            font-size: 1em;
+            opacity: 0;
+            animation: fadeInInput 1s ease forwards;
+        }
+
+        input:nth-of-type(1) { animation-delay: 0.3s; }
+        input:nth-of-type(2) { animation-delay: 0.5s; }
+        input:nth-of-type(3) { animation-delay: 0.7s; }
+
+        @keyframes fadeInInput {
+            to { opacity: 1; }
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6a1b9a;
+            background-color: #f3e5f5;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 1em;
+            background-color: #8e24aa;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
             margin-top: 15px;
-            padding: 8px 20px;
-            font-weight: bold;
+            animation: wiggle 1.5s infinite;
         }
-  </style>
+
+        button:hover {
+            background-color: #6a1b9a;
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            50% { transform: rotate(-1deg); }
+            75% { transform: rotate(1deg); }
+        }
+
+        .tiny-text {
+            font-size: 0.8em;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        .emoji {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .funny-img {
+            width: 100px;
+            margin: 20px auto;
+        }
+
+        audio {
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            .signup-box {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+
+            .emoji {
+                font-size: 2em;
+            }
+
+            .funny-img {
+                width: 80px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="glitch-bg"></div>
 
-  <div class="signup-box">
-    <h2>🔻 Sign Up 🔻</h2>
-    <form method="post">
-      {% csrf_token %}
-      <input type="text" name="first_name" placeholder="Enter your first name">
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}">
-      <input type="date" name="dob" placeholder="Date of Birth" required>
-      <select name="gender" required>
-        <option value="" disabled selected>Select Gender</option>
-        <option>Male</option>
-        <option>Female</option>
-        <option>Other</option>
-      </select>
-      <input type="text" name="username" placeholder="Username" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Summon The FunZone</button>
-    </form>
-    <div class="small-text">Already a member? <a href="/login" style="color:#ff4444;">Return to Sign In</a></div>
-  </div>
-  <!-- 👻 Ghost Popup -->
-<div id="ghostPopup">
-    <img src="https://media.giphy.com/media/3oEjHI8dLbwhH8QpO0/giphy.gif" alt="Ghost">
-    <h3>👻 Login Now!</h3>
-    <a href="#"><button>Go to Login</button></a>
-</div>
+    <!-- Music -->
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-funkyelement.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
 
-{% if signup_success %}
-<script>
-    // Show the popup after successful signup
-    window.onload = function() {
-        document.getElementById('ghostPopup').style.display = 'block';
-    }
-</script>
-{% endif %}
+    <!-- Sign Up Card -->
+    <div class="signup-box">
+        <div class="emoji">🤪🎉🦄</div>
+        <h2>Join the FunZone!</h2>
+        <p>We swear we won’t sell your info to aliens 👽</p>
+        <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" class="funny-img" alt="Funny Cat">
+        <!-- <form onsubmit="launchConfetti(); return false;"> -->
+            <form method="post" onsubmit="launchConfetti();">
+          {% csrf_token %}
+        <input type="text" name="name" placeholder="Your Cool Name 😎" required>
+        <input type="email" name="email" placeholder="Funny Email 📧" required>
+        <input type="password" name="password" placeholder="Super Secret Password 🔒" required>
+        <button type="submit">Sign Me Up 🚀</button>
+      </form>
+
+        <!-- </form> -->
+        <div class="tiny-text">Already a funster? <a href="#">Login here</a></div>
+    </div>
+
+    <!-- Confetti Script -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        function launchConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 100,
+                origin: { y: 0.6 }
+            });
+            alert("You're officially a funster! 🎉");
+        }
+    </script>
+
 </body>
 </html>
-
