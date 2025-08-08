@@ -17,7 +17,7 @@ def signup_view(request):
 
         user = User.objects.create_user(username=name, email=email, password=password)
         login(request, user)
-        return redirect('success')  # replace 'home' with your homepage url name
+        return redirect('success')  
 
     return render(request, 'signup.html')
 
@@ -29,7 +29,7 @@ def login_view(request):
         user = authenticate(request, username=name, password=password)
         if user is not None:
             login(request, user)
-            return redirect('success_page')  # redirect to a success page
+            return redirect('success_page')  
         else:
             return render(request, 'login.html', {'error': 'Invalid credentials'})
 

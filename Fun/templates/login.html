@@ -1,124 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Welcome Back!</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(45deg, #fcb045, #fd1d1d, #833ab4);
-            background-size: 300% 300%;
-            animation: gradientMove 10s ease infinite;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login | Haunted House</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #1d1d1d, #2e2e2e);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        @keyframes gradientMove {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
-        }
+    .login-box {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.2);
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
 
-        .login-box {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            width: 90%;
-            max-width: 350px;
-            text-align: center;
-            animation: popUp 1s ease-in-out;
-        }
+    .login-box h2 {
+      font-family: 'Rubik Dirt', cursive;
+      font-size: 2rem;
+      text-align: center;
+      color: #ff5252;
+    }
 
-        @keyframes popUp {
-            0% {transform: scale(0.5);}
-            100% {transform: scale(1);}
-        }
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
 
-        h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            color: #444;
-        }
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      background-color: #ff5252;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            outline: none;
-            transition: all 0.3s ease-in-out;
-        }
+    .login-box button:hover {
+      background-color: #ff0000;
+    }
 
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            border-color: #ff6f61;
-            box-shadow: 0 0 10px #ff6f61;
-        }
+    #ghost {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      display: none;
+      z-index: 5;
+    }
 
-        button {
-            margin-top: 15px;
-            background: #ff6f61;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease-in-out;
-        }
+    .ghost-popup {
+      animation: shake 0.4s infinite;
+    }
 
-        button:hover {
-            background: #ff3e2e;
-            transform: scale(1.05);
-        }
+    @keyframes shake {
+      0%, 100% { transform: translateX(-50%) rotate(0); }
+      25% { transform: translateX(-52%) rotate(1deg); }
+      75% { transform: translateX(-48%) rotate(-1deg); }
+    }
 
-        .emoji {
-            font-size: 40px;
-            animation: bounce 1s infinite alternate;
-        }
+    .warning-text {
+      text-align: center;
+      color: red;
+      margin-top: 10px;
+      font-weight: bold;
+      font-family: 'Rubik Dirt', cursive;
+    }
 
-        @keyframes bounce {
-            from { transform: translateY(0); }
-            to { transform: translateY(-10px); }
-        }
+    @media screen and (max-width: 500px) {
+      .login-box {
+        width: 90%;
+        padding: 20px;
+      }
 
-        .forgot {
-            margin-top: 10px;
-            font-size: 13px;
-            color: #888;
-        }
-
-        .forgot a {
-            color: #833ab4;
-            text-decoration: none;
-        }
-
-        .forgot a:hover {
-            text-decoration: underline;
-        }
-    </style>
+      .login-box h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="login-box">
-        <div class="emoji">😎</div>
-        <h2>Login to Your Kingdom</h2>
-        <form method="post" action="{% url 'login' %}">
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="👤 Username" required>
-            <input type="password" name="password" placeholder="🔒 Password" required>
-            <button type="submit">Enter 🕶️</button>
-        </form>
-        <div class="forgot">
-            Forgot your password? <a href="#">Click here</a>
-        </div>
-    </div>
+
+  <div class="login-box">
+    <img id="ghost" src="https://i.ibb.co/wcS1KhT/ghost.png" alt="Ghost">
+    <h2>Welcome Back!</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="warning-text" id="warning"></div>
+  </div>
+
+  <audio id="creepySound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
+
+  <script>
+    let failed = false;
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const warning = document.getElementById('warning');
+      const ghost = document.getElementById('ghost');
+      const sound = document.getElementById('creepySound');
+
+      // Simulate success: replace with real backend logic
+      const isCorrect = username === "admin" && password === "1234";
+
+      if (!isCorrect) {
+        if (!failed) {
+          // First mistake – show ghost
+          ghost.style.display = 'block';
+          ghost.classList.add('ghost-popup');
+          sound.play();
+          warning.textContent = "👻 Tell me your correct name and password...";
+          failed = true;
+        } else {
+          warning.textContent = "Try again... if you dare 👀";
+        }
+      } else {
+        warning.textContent = "";
+        alert("Login successful!"); // Replace with redirect in real app
+      }
+    }
+  </script>
+
 </body>
 </html>
+
