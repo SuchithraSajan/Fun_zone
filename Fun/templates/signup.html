@@ -71,6 +71,31 @@
       color: #aaa;
       margin-top: 10px;
     }
+     /* Ghost popup styling */
+        #ghostPopup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            background-color: #fff;
+            border: 3px solid #ccc;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+        }
+
+        #ghostPopup img {
+            width: 100px;
+        }
+
+        #ghostPopup button {
+            margin-top: 15px;
+            padding: 8px 20px;
+            font-weight: bold;
+        }
   </style>
 </head>
 <body>
@@ -80,7 +105,7 @@
     <h2>🔻 Sign Up 🔻</h2>
     <form method="post">
       {% csrf_token %}
-      <input type="text" name="name" placeholder="Full Name" required>
+      <input type="text" name="first_name" placeholder="Enter your first name">
       <input type="email" name="email" placeholder="Email" required>
       <input type="tel" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}">
       <input type="date" name="dob" placeholder="Date of Birth" required>
@@ -96,6 +121,21 @@
     </form>
     <div class="small-text">Already a member? <a href="/login" style="color:#ff4444;">Return to Sign In</a></div>
   </div>
+  <!-- 👻 Ghost Popup -->
+<div id="ghostPopup">
+    <img src="https://media.giphy.com/media/3oEjHI8dLbwhH8QpO0/giphy.gif" alt="Ghost">
+    <h3>👻 Login Now!</h3>
+    <a href="#"><button>Go to Login</button></a>
+</div>
+
+{% if signup_success %}
+<script>
+    // Show the popup after successful signup
+    window.onload = function() {
+        document.getElementById('ghostPopup').style.display = 'block';
+    }
+</script>
+{% endif %}
 </body>
 </html>
 

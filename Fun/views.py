@@ -14,7 +14,7 @@ def sign(request):
         email = request.POST['email']
         password = request.POST['password']
         first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
+        # last_name = request.POST['last_name']
         phone = request.POST['phone']
         dob = request.POST['dob']
         gender = request.POST['gender']
@@ -25,7 +25,7 @@ def sign(request):
             email=email,
             password=password,
             first_name=first_name,
-            last_name=last_name
+            # last_name=last_name
         )
 
         # Create the UserProfile
@@ -40,3 +40,6 @@ def sign(request):
         return redirect('#')  # or your home page
 
     return render(request, 'signup.html')  # your signup template
+
+def welcome(request):
+    return render(request,'welcomepage.html')
