@@ -50,10 +50,11 @@ def first(request):
 def neon(request):
     return render(request,'neon.html')
 
-def tord(request):
-    return render(request,'tord.html')
+def prank(request):
+    return render(request,'prank.html')
 
 def chik(request):
     return render(request,'chik.html')
 
-
+def t_or_d(request):
+    return render(request,'t_or_d')

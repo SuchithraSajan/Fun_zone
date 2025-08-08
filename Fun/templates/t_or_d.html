@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truth or Dare</title>
+<style>
+    #body {
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        font-family: 'Arial', sans-serif;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: fadeIn 1.5s ease-in-out;
+    }
+
+    button {
+        padding: 15px 30px;
+        margin: 10px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s, background 0.3s;
+    }
+
+    .truth {
+        background: #00c6ff;
+        color: white;
+    }
+
+    .dare {
+        background: #ff4b2b;
+        color: white;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+        filter: brightness(1.2);
+    }
+
+    #question {
+        font-size: 1.5rem;
+        margin-top: 30px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        animation: popUp 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    @keyframes popUp {
+        from {transform: scale(0.5); opacity: 0;}
+        to {transform: scale(1); opacity: 1;}
+    }
+</style>
+</head>
+<body>
+    <a href="{% url 'first' %}" >Back to Home</a>
+<div id="body">
+<h1>🎯 Truth or Dare 🎯</h1>
+<div>
+    <button class="truth" onclick="askQuestion('truth')">Truth</button>
+    <button class="dare" onclick="askQuestion('dare')">Dare</button>
+</div>
+
+<p id="question"></p>
+
+<script>
+    const truthQuestions = [
+        "What’s the silliest thing you’ve ever done in front of people?",
+        "What’s a secret you’ve never told anyone?",
+        "Who was your first crush?",
+        "What’s the weirdest food you’ve ever tried?",
+        "Have you ever told a lie to get out of trouble?",
+        "What’s your most embarrassing moment?",
+        "What’s the biggest mistake you’ve made this year?",
+        "What’s the funniest dream you’ve ever had?",
+        "Who would you call if you were in trouble at 3 AM?",
+        "What’s one thing you would never do, even for money?",
+    ];
+
+    const dareQuestions = [
+    "Speak in a funny accent for the next 3 minutes.",
+    "Try to sing everything you say for the next 2 minutes.",
+    "Do 10 jumping jacks while laughing.",
+    "Post a random emoji in the group chat.",
+    "Pretend to be a cat for 30 seconds.",
+    "Eat something without using your hands.",
+    "Say the alphabet backwards.",
+    "Take a funny selfie and share it.",
+    "Make an animal sound every time someone talks to you.",
+    "Pretend the floor is lava for 1 minute."
+    ];
+
+    function askQuestion(type) {
+        let question = "";
+        if (type === "truth") {
+            question = truthQuestions[Math.floor(Math.random() * truthQuestions.length)];
+        } else {
+            question = dareQuestions[Math.floor(Math.random() * dareQuestions.length)];
+        }
+        document.getElementById("question").innerText = question;
+    }
+</script>
+</div>
+</body>
+</html>
