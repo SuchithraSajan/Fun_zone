@@ -1,7 +1,7 @@
 {
     "builds":[
         {
-            "src":"manage.py",
+            "src":"FUNZONE/wsgi.py",
             "use":"@vercel/python",
             "config":{
                 "maxLambdaSize":"30mb",
@@ -13,7 +13,7 @@
     "routes":[
         {
             "src" : "/(.*)",
-            "dest":"manage.py"
+            "dest":"FUNZONE/wsgi.py"
         }
     ]
 }
