@@ -14,9 +14,10 @@ FunZone is a playful web application filled with interactive games, pranks, and 
 - *Deployment:* Works on any Django-supported platform
 ## 📂 Project Structure
 
-FunZone/ ├── static/        # Images, CSS, JS files ├── templates/     
-                            # HTML templates ├── funzone/       
-                            # Django app files ├── manage.py └── README.md
+FunZone/ ├── static/        
+# Images, CSS, JS files ├── templates/     
+# HTML templates ├── funzone/       
+# Django app files ├── manage.py └── README.md
 
 
 ## 🚀 Getting Started
